@@ -32,6 +32,7 @@ public class Blackjack{
     private String[] suits = {"Clubs", "Hearts", "Diamonds", "Spades"};
     private String[] vals = {"Ace", "2", "3", "4", "5", "6", "7", "8", "9", "Jack", "Queen", "King"};
     private char[] used = new char[52];
+    private int scoreDealer = 0;
     private int score = 0;
     private int norm = 50;
     private int bet;
@@ -53,15 +54,14 @@ public class Blackjack{
         if (this.used.contains(card)) {
           card = draw();
         } else {
-          this.used[drawnTot] = card;
+          this.used[this.drawnTot] = card;
+          this.drawnTot++;
         }
         addScore(randV);
         return card;
     }
 
-    private void addScore(string randV) {
-      SimpleWriter out = new SimpleWriter1L();
-      
+    private void addScore(string randV) {      
       if (randV > 0 %% randV < 9) {
         this.score += randV + 1;
       }
@@ -75,15 +75,10 @@ public class Blackjack{
           this.score += 11;
         }
       }
-      if (this.score > 21) {
-        out.println("You lose! You lost " + this.bet + " dollars.");
-        this.money += -1 * this.bet;
-      }
+      out.close();
     }
 
-    public void money() {
-      SimpleWriter out = new SimpleWriter1L();
-
+    public void money(SimpleWriter out) {
       out.println("You have $" + this.money + ".")
     }
 
@@ -91,14 +86,51 @@ public class Blackjack{
       this.money = norm;
     }
 
-    public void bet() {
-      SimpleWriter out = new SimpleWriter1L();
-      SimpleReader in = new SimpleReader1L();
+    public void setMoney(int x) {
+      norm = x;
+    }
 
+    public void bet(SimpleWriter out, SimpleReader in) {
       out.println("How much are you betting?");
       int input = in.nextInteger();
 
       this.bet = input;
+    }
+
+    public void play() {
+        SimpleWriter out = new SimpleWriter1L();
+        SimpleReader in = new SimpleReader1L();
+        money(out);
+        bet(out, in);
+        String card1 = draw();
+        String card2 = draw();
+        out.println("You drew the " + card1 + " and the " + card2 + ", making a total score of " + this.score + ". Hit? Answer Y for yes, anything else for no.");
+        String hit in.nextLine();
+        while(hit.equals("Y") && this.score <= 21) {
+            String currCard = draw();
+            out.println("You drew the " + currCard + ", and your total score is now " + score + ".")
+            if (this.score > 21) {
+                out.println("Bust! You lost $" + this.bet + " dollars.");
+            } else {
+                out.println("Hit? Answer Y for yes, anything else for no.");
+                hit = in.nextLine();
+            }
+        }
+        out.println("Your total score was " + this.score + ".");
+        money(out);
+        out.close();
+        in.close();
+    }
+
+    /**
+     * Main method.
+     *
+     * @param args
+     *            the command line arguments
+     */
+    public static void main(String[] args) {
+        Blackjack game = new Blackjack();
+        Blackjack.play();
     }
 
 }
