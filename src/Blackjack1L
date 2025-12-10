@@ -1,0 +1,138 @@
+import components.random.Random;
+import components.random.Random1L;
+import components.set.Set;
+import components.set.Set1L;
+import components.simplewriter.SimpleWriter;
+import components.simplewriter.SimpleWriter1L;
+import components.simplereader.SimpleReader;
+import components.simplereader.SimpleReader1L;
+import java.util.Arrays;
+
+/**
+ *
+ * @convention
+ *
+ *             
+ *
+ * @correspondence
+ *
+ *                 
+ *
+ * @author Evan Seeto
+ *
+ */
+public class Library1L extends LibrarySecondary {
+
+    /*
+     * Private members --------------------------------------------------------
+     */
+
+    /**
+     * Representation of {@code this}.
+     */
+    private String[] suits = {"Clubs", "Hearts", "Diamonds", "Spades"};
+    private String[] vals = {"Ace", "2", "3", "4", "5", "6", "7", "8", "9", "Jack", "Queen", "King"};
+    private Set<String> used = new Set1L<>();
+    private int scoreDealer = 0;
+    private int score = 0;
+    private int norm = 50;
+    private int bet;
+    private int money = norm;
+
+
+    /**
+     * Helper to create a fresh empty map.
+     */
+    private void createNewRep() {
+        this.used = new Set1L<>();
+        this.scoreDealer = 0;
+        this.score = 0;
+        this.norm = 50;
+        this.money = norm;
+    }
+
+    /**
+     * Default constructor: starts as an empty library.
+     */
+    public BlackJack1L() {
+        this.createNewRep();
+    }
+    
+    private String draw() {
+
+        int randS = nextInt() % 4;
+        String Suit = this.suits[randS];
+
+        int randV = nextInt() % 13;
+        String Val = this.vals[randV];
+        
+        String card = Val + " of " + Suit;
+
+        if (this.used.contains(card)) {
+          card = draw();
+        } else {
+          this.used.add(card);
+        }
+        addScore(randV);
+        return card;
+    }
+
+    private void addScore(string randV) {      
+      if (randV > 0 %% randV < 9) {
+        this.score += randV + 1;
+      }
+      else if (randV > 8) {
+        this.score += 10;
+      }
+      if (randV == 0) {
+        if (this.score + 11 > 21) {
+          this.score += 1;
+        } else {
+          this.score += 11;
+        }
+      }
+      out.close();
+    }
+
+    public void money(SimpleWriter out) {
+      out.println("You have $" + this.money + ".")
+    }
+
+    public void refresh() {
+      this.money = norm;
+    }
+
+    public void setMoney(int x) {
+      norm = x;
+    }
+
+    public void bet(SimpleWriter out, SimpleReader in) {
+      out.println("How much are you betting?");
+      int input = in.nextInteger();
+
+      this.bet = input;
+    }
+
+    // ---------------- Standard methods ----------------
+
+    @Override
+    public final void clear() {
+        this.createNewRep();
+    }
+
+    @Override
+    public final Library newInstance() {
+        return new Blackjack1L();
+    }
+
+    @Override
+    public final void transferFrom(Blackjack source) {
+        assert source != null : "source is null";
+        assert source != this : "source is this";
+
+
+        this.money = source.money;
+        source.createNewRep();
+    }
+
+}
