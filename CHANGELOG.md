@@ -8,6 +8,7 @@ the following form: YYYY.0M.0D.
 
 ## [2024.12.10]
 - reformatted BlackjackKernel
+- added BlackjackSecondary, which implements Blackjack
 
 ## [2024.12.09]
 - implemented component interfaces BlackjackKernel and Blackjack
