@@ -120,7 +120,7 @@ Below is further rationale/explanation for the rubric items above:
 > discuss how that representation will be restricted (i.e., by convention)
 > and interpreted (i.e., by correspondence).
 
-<!-- TODO: select a representation and explain why -->
+The suits and values of each card will be represented by an array with each suit/value to make it easy to make a random integer call either a suit or value. The "stack" of drawn cards will be a string set , to make it easy to check if a card has already been drawn before. 
 
 > To start making your kernel implementation, make a branch off of main in your
 > new repo called something like `kernel-implementation`. There are many ways to

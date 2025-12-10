@@ -9,6 +9,8 @@ the following form: YYYY.0M.0D.
 ## [2024.12.10]
 - reformatted BlackjackKernel
 - added BlackjackSecondary, which implements Blackjack
+- updated Blackjack, BlackjackKernel, and BlackjackSecondary so that this.used is a set instead of an array
+- implemented Blackjack1L
 
 ## [2024.12.09]
 - implemented component interfaces BlackjackKernel and Blackjack
