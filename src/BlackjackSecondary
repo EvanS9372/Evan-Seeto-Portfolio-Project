@@ -18,7 +18,7 @@ public abstract class BlackjackSecondary implements Blackjack {
      */
     private String[] suits = {"Clubs", "Hearts", "Diamonds", "Spades"};
     private String[] vals = {"Ace", "2", "3", "4", "5", "6", "7", "8", "9", "Jack", "Queen", "King"};
-    private String[] used = new char[52];
+    private Set<String> used = new Set1L<>();
     private int scoreDealer = 0;
     private int score = 0;
     private int norm = 50;
