@@ -25,10 +25,6 @@ public interface Blackjack extends BlackjackKernel {
     /*
      * Private members --------------------------------------------------------
      */
-
-    /**
-     * Representation of {@code this}.
-     */
     private String[] suits = {"Clubs", "Hearts", "Diamonds", "Spades"};
     private String[] vals = {"Ace", "2", "3", "4", "5", "6", "7", "8", "9", "Jack", "Queen", "King"};
     private char[] used = new char[52];
@@ -38,6 +34,11 @@ public interface Blackjack extends BlackjackKernel {
     private int bet;
     private int money = norm;
     private int drawnTot = 0; 
+
+    /**
+     * Representation of {@code this}.
+     */
+
     /**
      * Creator of initial representation.
      */
