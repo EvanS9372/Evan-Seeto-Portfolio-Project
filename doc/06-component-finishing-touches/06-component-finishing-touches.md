@@ -307,18 +307,18 @@ Take some time to fill them out honestly.
 > complete the portfolio project, how much better (or worse) do you think you
 > understand software development and why?
 
-<!-- TODO: discuss -->
+I think I understand it a good bit better since I've actually had some experience in making an entire project from scratch.
 
 > Also, did the portfolio project surface any gaps in your own knowledge of
 > software development. If so, what are those gaps and how did you address them?
 
-<!-- TODO: discuss -->
+It did, it taught me the proper formatting with components, which I addressed by looking back at previous projects and looking through the other OSU components
 
 > Finally, as a part of completing the portfolio project, to what extent has
 > your perspective of software development changed, if at all? In other words,
 > is software development something you still enjoy? If not, why not?
 
-<!-- TODO: discuss -->
+it gave me a lot more respect for people who implement components because of how many moving parts are involved. I definitely enjoy it still.
 
 > One of the challenges of completing the portfolio project is picking up a lot
 > of skills on your own. Some of these skills are, of course, software skills.
@@ -326,25 +326,26 @@ Take some time to fill them out honestly.
 > this process. Therefore, the first question is what skills did you pick up
 > through this process?
 
-<!-- TODO: discuss -->
+I definitely improved my abilities to convert algorithms for games directly into code.
 
 > The follow-up question is: could you rephrase these skills you picked up
 > as bullet points that you could put on a resume? Try it below.
 
-<!-- TODO: discuss -->
+- able to convert algorithms to code
+- able to create and implement components
 
 > Next, how has working on this project affected your career trajectory?
 > In other words, do you now hate the topic you picked? Or, are you even more
 > interested in it? Both outcomes are valuable to your personal development.
 
-<!-- TODO: discuss -->
+I think the topic I picked was simultaneously boring and too hard, and I wish I made a buckshot roulette component instead, since I would've been a lot more passionate about that
 
 > Finally, consider the skills you've picked up and your current career
 > trajectory. What are some things you could do to continue on your
 > career trajectory? Also, who are some mentors you could contact to help
 > you stay on your path?
 
-<!-- TODO: discuss -->
+I think I'm still going to continue down the path of software development, but I'm also considering pivoting into IP law as well. Mentors I could pick would be you (obviously), and if I was going to head into IP law, my dad works at the district attourney's office of Ohio and I could likely find a mentor there.
 
 ### Changelog
 
