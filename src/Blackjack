@@ -1,0 +1,106 @@
+import components.random.Random;
+import components.random.Random1L;
+import components.simplewriter.SimpleWriter;
+import components.simplewriter.SimpleWriter1L;
+import components.simplereader.SimpleReader;
+import components.simplereader.SimpleReader1L;
+import java.util.Arrays;
+
+
+/**
+ *
+ * @convention
+ *
+ *             
+ *
+ * @correspondence
+ *
+ *                 
+ *
+ * @author Evan Seeto
+ *
+ */
+public interface Blackjack extends BlackjackKernel {
+
+    /*
+     * Private members --------------------------------------------------------
+     */
+    private String[] suits = {"Clubs", "Hearts", "Diamonds", "Spades"};
+    private String[] vals = {"Ace", "2", "3", "4", "5", "6", "7", "8", "9", "Jack", "Queen", "King"};
+    private String[] used = new char[52];
+    private int scoreDealer = 0;
+    private int score = 0;
+    private int norm = 50;
+    private int bet;
+    private int money = norm;
+    private int drawnTot = 0; 
+
+    /**
+     * Representation of {@code this}.
+     */
+
+    /**
+     * Creator of initial representation.
+     */
+
+
+    /**
+     * plays the actual game of blackjack
+     *
+     * @updates every private member except norm and the arrays
+     */
+    public void play() {
+        SimpleWriter out = new SimpleWriter1L();
+        SimpleReader in = new SimpleReader1L();
+        money(out);
+        bet(out, in);
+        String cardD1 = draw(1);
+        String cardD2 = draw(1);
+        String card1 = draw(0);
+        String card2 = draw(0);
+        out.println("The dealer drew the " + cardD1 + " and the second card is unrevealed.");
+        out.println("You drew the " + card1 + " and the " + card2 + ", making a total score of " + this.score + ". Hit? Answer Y for yes, anything else for no.");
+        String hit in.nextLine();
+        while(hit.equals("Y") && this.score <= 21) {
+            String currCard = draw(0);
+            out.println("You drew the " + currCard + ", and your total score is now " + score + ".")
+            if (this.score > 21) {
+                out.println("Bust! You lost $" + this.bet + " dollars.");
+                this.money -= this.bet;
+            } else {
+                out.println("Hit? Answer Y for yes, anything else for no.");
+                hit = in.nextLine();
+            }
+        }
+        if(this.score <= 21) {
+            out.println("Your total score is " + this.score + ".");
+            out.println("Dealer's turn!");
+            out.println("The dealer's first card was the " + card1 + " and the unrevealed card was the " + card2 + ", making a total score of " + this.scoreDealer + ".);
+            while(this.scoreDealer <= this.score && this.scoreDealer < 21) {
+                currCard = draw(1);
+                out.println("The dealer drew the " + currCard + ", and his total score is now " + score + " compared to your score of " + this.score + ".");
+                if (this.scoreDealer > 21) {
+                    out.println("Bust! You won $" + this.bet + " dollars!");
+                    this.money += this.bet;
+                }
+            }
+            if (this.scoreDealer <= 21) {
+                out.println("The dealer stands with a score of " + this.scoreDealer + " compared to your score of " + this.score + ".");
+            }
+            if (this.scoreDealer > this.score) {
+                out.println("You lose! You lost $" + this.bet + " dollars.");
+            }
+            else if (this.scoreDealer == this.score) {
+                out.println("Tie! No money was lost or gained.");
+            }
+        }
+
+        money(out);
+        this.scoreDealer = 0;
+        this.score = 0;
+        private int drawnTot = 0; 
+        out.close();
+        in.close();
+    }
+
+}
