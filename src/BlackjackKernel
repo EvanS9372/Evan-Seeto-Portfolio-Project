@@ -97,30 +97,6 @@ public interface BlackjackKernel extends Standard<Blackjack>
       this.bet = input;
     }
 
-    public void play() {
-        SimpleWriter out = new SimpleWriter1L();
-        SimpleReader in = new SimpleReader1L();
-        money(out);
-        bet(out, in);
-        String card1 = draw();
-        String card2 = draw();
-        out.println("You drew the " + card1 + " and the " + card2 + ", making a total score of " + this.score + ". Hit? Answer Y for yes, anything else for no.");
-        String hit in.nextLine();
-        while(hit.equals("Y") && this.score <= 21) {
-            String currCard = draw();
-            out.println("You drew the " + currCard + ", and your total score is now " + score + ".")
-            if (this.score > 21) {
-                out.println("Bust! You lost $" + this.bet + " dollars.");
-            } else {
-                out.println("Hit? Answer Y for yes, anything else for no.");
-                hit = in.nextLine();
-            }
-        }
-        out.println("Your total score was " + this.score + ".");
-        money(out);
-        out.close();
-        in.close();
-    }
 
     /**
      * Main method.
