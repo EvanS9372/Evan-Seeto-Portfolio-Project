@@ -10,11 +10,8 @@ import java.util.Arrays;
 
 /**
  *
- * @convention
- *
- *             
- *
- * @correspondence
+ * @convention when calling draw, the int must be 0 or 1, this.money is the only variable that persists between games and is the only variable that needs transferring
+ * @correspondence this.used is cards that have been already drawn, this.suits and this.vals is the array of all possible suits and values respectively
  *
  *                 
  *
