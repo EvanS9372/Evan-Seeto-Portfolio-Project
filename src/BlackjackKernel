@@ -20,6 +20,9 @@ import java.util.Arrays;
  * @author Evan Seeto
  *
  */
+/**
+ * Kernel interface for blackjack. contains all of the game elements and methods
+ */
 public interface BlackjackKernel extends Standard<Blackjack>
 
     /*
@@ -53,7 +56,7 @@ public interface BlackjackKernel extends Standard<Blackjack>
      * @requires player is either 1 or 0.
      * @returns the card suit and value
      */
-    private String draw(int player) {...}
+    private String draw(int player);
 
     /**
      * adds the score of the card drawn to the player or dealer's score
@@ -66,7 +69,7 @@ public interface BlackjackKernel extends Standard<Blackjack>
      * @ensures #player's score + val = player's score
      * @requires player is either 1 or 0, and that randV is between 0 and 12.
      */
-    private void addScore(string randV, int player) {...}
+    private void addScore(string randV, int player);
 
     /**
      * prints the value of the money earned.
@@ -75,9 +78,7 @@ public interface BlackjackKernel extends Standard<Blackjack>
      *            the console or output file to be written to
      * @returns this.money
      */
-    public void money(SimpleWriter out) {
-      out.println("You have $" + this.money + ".")
-    }
+    public void money(SimpleWriter out);
 
     /**
      * resets the player's money to the default amount.
@@ -85,7 +86,7 @@ public interface BlackjackKernel extends Standard<Blackjack>
      * @updates this.money
      * @ensures this.money = this.norm
      */
-    public void refresh() {...}
+    public void refresh();
 
      /**
      * sets the default value of the player's money.
@@ -95,7 +96,7 @@ public interface BlackjackKernel extends Standard<Blackjack>
      * @updates this.norm
      * @ensures this.norm = x
      */
-    public void setMoney(int x) {...}
+    public void setMoney(int x);
 
     /**
      * sets the amount of money the player will bet
@@ -107,5 +108,5 @@ public interface BlackjackKernel extends Standard<Blackjack>
      * @updates this.bet
      * @ensures this.bet is equal to the amount desired
      */
-    public void bet(SimpleWriter out, SimpleReader in) {...}
+    public void bet(SimpleWriter out, SimpleReader in);
 }
