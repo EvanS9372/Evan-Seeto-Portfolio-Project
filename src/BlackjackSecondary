@@ -24,7 +24,6 @@ public abstract class BlackjackSecondary implements Blackjack {
     private int norm = 50;
     private int bet;
     private int money = norm;
-    private int drawnTot = 0; 
 
     /**
      * Constructs the game of blackjack.
