@@ -96,17 +96,4 @@ public interface BlackjackKernel extends Standard<Blackjack>
 
       this.bet = input;
     }
-
-
-    /**
-     * Main method.
-     *
-     * @param args
-     *            the command line arguments
-     */
-    public static void main(String[] args) {
-        Blackjack game = new Blackjack();
-        Blackjack.play();
-    }
-
 }
