@@ -6,7 +6,7 @@ import components.simplereader.SimpleReader;
 import components.simplereader.SimpleReader1L;
 import java.util.Arrays;
 
-
+ 
 /**
  *
  * @convention
