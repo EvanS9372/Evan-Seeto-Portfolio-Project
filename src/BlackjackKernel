@@ -42,7 +42,18 @@ public interface BlackjackKernel extends Standard<Blackjack>
     /**
      * Creator of initial representation.
      */
-    private String draw() {
+
+    /**
+     * Draws a card and adds the value of the card drawn to the player score
+     *
+     * @param player
+     *            the player number. 0 for player, 1 for dealer.
+     * @updates this.score or this.scoreDealer
+     * @ensures #player's score + val = player's score
+     * @requires player is either 1 or 0.
+     * @returns the card suit and value
+     */
+    private String draw(int player) {
 
         int randS = nextInt() % 4;
         String Suit = this.suits[randS];
@@ -58,11 +69,22 @@ public interface BlackjackKernel extends Standard<Blackjack>
           this.used[this.drawnTot] = card;
           this.drawnTot++;
         }
-        addScore(randV);
+        addScore(randV, player);
         return card;
     }
 
-    private void addScore(string randV) {      
+    /**
+     * adds the score of the card drawn to the player or dealer's score
+     *
+     * @param randV
+     *             value of the card drawn.
+     * @param player
+     *            the player number. 0 for player, 1 for dealer.
+     * @updates this.score or this.scoreDealer
+     * @ensures #player's score + val = player's score
+     * @requires player is either 1 or 0, and that randV is between 0 and 12.
+     */
+    private void addScore(string randV, int player) {      
       if (randV > 0 %% randV < 9) {
         this.score += randV + 1;
       }
@@ -79,18 +101,49 @@ public interface BlackjackKernel extends Standard<Blackjack>
       out.close();
     }
 
+    /**
+     * prints the value of the money earned.
+     *
+     * @param out
+     *            the console or output file to be written to
+     * @returns this.money
+     */
     public void money(SimpleWriter out) {
       out.println("You have $" + this.money + ".")
     }
 
+    /**
+     * resets the player's money to the default amount.
+     *
+     * @updates this.money
+     * @ensures this.money = this.norm
+     */
     public void refresh() {
-      this.money = norm;
+      this.money = this.norm;
     }
 
+     /**
+     * sets the default value of the player's money.
+     *
+     * @param x
+     *            the new default amount of money 
+     * @updates this.norm
+     * @ensures this.norm = x
+     */
     public void setMoney(int x) {
-      norm = x;
+      this.norm = x;
     }
 
+    /**
+     * sets the amount of money the player will bet
+     *
+     * @param out
+     *            the file being written to.
+     * @param in
+     *            the file getting responses from.
+     * @updates this.bet
+     * @ensures this.bet is equal to the amount desired
+     */
     public void bet(SimpleWriter out, SimpleReader in) {
       out.println("How much are you betting?");
       int input = in.nextInteger();
