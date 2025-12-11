@@ -155,7 +155,7 @@ public class Blackjack1L extends BlackjackSecondary {
     }
 
     @Override
-    public final Library newInstance() {
+    public final Blackjack newInstance() {
         return new Blackjack1L();
     }
 
