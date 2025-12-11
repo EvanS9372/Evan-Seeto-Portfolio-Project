@@ -55,7 +55,17 @@ public class Blackjack1L extends BlackjackSecondary {
         this.createNewRep();
     }
     
-    private String draw() {
+    /**
+     * Draws a card and adds the value of the card drawn to the player score
+     *
+     * @param player
+     *            the player number. 0 for player, 1 for dealer.
+     * @updates this.score or this.scoreDealer
+     * @ensures #player's score + val = player's score
+     * @requires player is either 1 or 0.
+     * @returns the card suit and value
+     */
+    private String draw(int player) {
 
         int randS = nextInt() % 4;
         String Suit = this.suits[randS];
@@ -68,9 +78,10 @@ public class Blackjack1L extends BlackjackSecondary {
         if (this.used.contains(card)) {
           card = draw();
         } else {
-          this.used.add(card);
+          this.used[this.drawnTot] = card;
+          this.drawnTot++;
         }
-        addScore(randV);
+        addScore(randV, player);
         return card;
     }
 
