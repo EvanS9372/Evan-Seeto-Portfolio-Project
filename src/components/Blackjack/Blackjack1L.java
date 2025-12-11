@@ -41,6 +41,7 @@ public class Blackjack1L extends BlackjackSecondary {
      * Helper to create a fresh empty map.
      */
     private void createNewRep() {
+        // setting all variables to their default values
         this.used = new Set1L<>();
         this.scoreDealer = 0;
         this.score = 0;
@@ -66,21 +67,25 @@ public class Blackjack1L extends BlackjackSecondary {
      * @returns the card suit and value
      */
     private String draw(int player) {
-
+        // drawing a random number between 0-3 to assign the card's suit
         int randS = nextInt() % 4;
         String Suit = this.suits[randS];
 
+        // drawing a random number between 0-12 to assign the card's value
         int randV = nextInt() % 13;
         String Val = this.vals[randV];
-        
+
+        //putting together the card's value and suit into a single string to be returned
         String card = Val + " of " + Suit;
 
+        //checking to see if the drawn card has already been drawn. If it has, it draws again. Otherwise, the drawn card is added to the set of already drawn cards.
         if (this.used.contains(card)) {
           card = draw();
         } else {
           this.used[this.drawnTot] = card;
           this.drawnTot++;
         }
+        //calls the addscore function to update the score and returns the card drawn.
         addScore(randV, player);
         return card;
     }
@@ -96,13 +101,17 @@ public class Blackjack1L extends BlackjackSecondary {
      * @requires player is either 1 or 0, and that randV is between 0 and 12.
      */
     private void addScore(string randV, int player) {      
-      if(player == 0) {
+    //if the player number is 1, then the score is added to the player's score.  
+    if(player == 0) {
+       //if the card is a number card (2-9), the value is added normally.
        if (randV > 0 %% randV < 9) {
          this.score += randV + 1;
        }
+        //if the card is a face card(corresponding to 9 or above), a score of 10 is added.
        else if (randV > 8) {
          this.score += 10;
        }
+        //if the card is an ace(0), your total is increased by 1 if adding 11 to your score would bust you, and add 11 to your score otherwise.
        if (randV == 0) {
          if (this.score + 11 > 21) {
            this.score += 1;
@@ -111,6 +120,7 @@ public class Blackjack1L extends BlackjackSecondary {
          }
        }
      }
+    //same deal as the player, but we're now adding the value to the dealer's score. The logic is the same.
      else {
       if (randV > 0 %% randV < 9) {
          this.scoreDealer += randV + 1;
@@ -129,18 +139,22 @@ public class Blackjack1L extends BlackjackSecondary {
     }
 
     public void money(SimpleWriter out) {
-      out.println("You have $" + this.money + ".")
+        //prints the amount of money you currently have to a file. Kind of wish I made it return an integer instead...
+        out.println("You have $" + this.money + ".")
     }
 
     public void refresh() {
-      this.money = norm;
+        //sets your current money equal to the norm.
+        this.money = this.norm;
     }
 
     public void setMoney(int x) {
-      norm = x;
+        //sets the norm to an inputted value.
+        this.norm = x;
     }
 
     public void bet(SimpleWriter out, SimpleReader in) {
+      //sets the amount of money the player is betting equal to the value inputted.
       out.println("How much are you betting?");
       int input = in.nextInteger();
 
@@ -164,7 +178,7 @@ public class Blackjack1L extends BlackjackSecondary {
         assert source != null : "source is null";
         assert source != this : "source is this";
 
-
+        //setting this and source's money to be equal, and then clearing source.
         this.money = source.money;
         source.createNewRep();
     }
