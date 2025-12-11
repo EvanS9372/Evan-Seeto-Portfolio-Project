@@ -119,7 +119,7 @@ public class Blackjack1L extends BlackjackSecondary {
          this.scoreDealer += 10;
        }
        if (randV == 0) {
-         if (this.score + 11 > 21) {
+         if (this.scoreDealer + 11 > 21) {
            this.scoreDealer += 1;
          } else {
            this.scoreDealer += 11;
