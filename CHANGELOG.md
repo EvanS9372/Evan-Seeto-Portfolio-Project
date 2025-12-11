@@ -11,6 +11,11 @@ the following form: YYYY.0M.0D.
 - added BlackjackSecondary, which implements Blackjack
 - updated Blackjack, BlackjackKernel, and BlackjackSecondary so that this.used is a set instead of an array
 - implemented Blackjack1L
+- implemented test cases for Blackjack1L (BlackjackSecondary can't be tested because of its randomness)
+- updated README pages for src folder, the main folder, and the test folder.
+- minor bug fixes for the kernel and standard methods
+- added comments for transparency
+- rearranged the file placement for the component files and test cases so they're nested in the components/Blackjack folders in src and test respectively.
 
 ## [2024.12.09]
 - implemented component interfaces BlackjackKernel and Blackjack
