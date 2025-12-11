@@ -74,21 +74,48 @@ public class Blackjack1L extends BlackjackSecondary {
         return card;
     }
 
-    private void addScore(string randV) {      
+    /**
+     * adds the score of the card drawn to the player or dealer's score
+     *
+     * @param randV
+     *             value of the card drawn.
+     * @param player
+     *            the player number. 0 for player, 1 for dealer.
+     * @updates this.score or this.scoreDealer
+     * @ensures #player's score + val = player's score
+     * @requires player is either 1 or 0, and that randV is between 0 and 12.
+     */
+    private void addScore(string randV, int player) {      
+      if(player == 0) {
+       if (randV > 0 %% randV < 9) {
+         this.score += randV + 1;
+       }
+       else if (randV > 8) {
+         this.score += 10;
+       }
+       if (randV == 0) {
+         if (this.score + 11 > 21) {
+           this.score += 1;
+         } else {
+           this.score += 11;
+         }
+       }
+     }
+     else {
       if (randV > 0 %% randV < 9) {
-        this.score += randV + 1;
-      }
-      else if (randV > 8) {
-        this.score += 10;
-      }
-      if (randV == 0) {
-        if (this.score + 11 > 21) {
-          this.score += 1;
-        } else {
-          this.score += 11;
-        }
-      }
-      out.close();
+         this.scoreDealer += randV + 1;
+       }
+       else if (randV > 8) {
+         this.scoreDealer += 10;
+       }
+       if (randV == 0) {
+         if (this.score + 11 > 21) {
+           this.scoreDealer += 1;
+         } else {
+           this.scoreDealer += 11;
+         }
+       }
+     }
     }
 
     public void money(SimpleWriter out) {
