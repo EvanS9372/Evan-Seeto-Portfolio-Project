@@ -1,5 +1,7 @@
 import components.random.Random;
 import components.random.Random1L;
+import components.set.Set;
+import components.set.Set1L;
 import components.simplewriter.SimpleWriter;
 import components.simplewriter.SimpleWriter1L;
 import components.simplereader.SimpleReader;
@@ -30,13 +32,12 @@ public interface BlackjackKernel extends Standard<Blackjack>
      */
     private String[] suits = {"Clubs", "Hearts", "Diamonds", "Spades"};
     private String[] vals = {"Ace", "2", "3", "4", "5", "6", "7", "8", "9", "Jack", "Queen", "King"};
-    private String[] used = new char[52];
+    private Set<String> used = new Set1L<>();
     private int scoreDealer = 0;
     private int score = 0;
     private int norm = 50;
     private int bet;
     private int money = norm;
-    private int drawnTot = 0; 
 
     /**
      * Representation of {@code this}.
